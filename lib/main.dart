@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:home_care/modules/user/layout/user_layout_sreen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_care/modules/user/layout/cubit/cubit.dart';
 import 'package:home_care/theme/theme.dart';
 
-import 'modules/user/auth/user_login_screen.dart';
 import 'modules/user/onboarding/on_boarding_screen.dart';
 
 void main() {
@@ -14,11 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(providers: [
+      BlocProvider<LayoutCubit>(create: (context) => LayoutCubit()),
+    ], child: MaterialApp(
       title: 'Home Care',
       theme: MyTheme.myTheme,
       debugShowCheckedModeBanner: false,
       home: OnBoardingScreen(),
-    );
+    ));
+    
   }
 }

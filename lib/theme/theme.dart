@@ -12,6 +12,13 @@ class MyTheme {
             ),
           ),
       ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedItemColor: MyColors.orangeColor,
+        unselectedItemColor: Colors.grey.shade500,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       primaryColor: MyColors.mainColor,
       fontFamily: MyFonts.myFont,
       accentColor: MyColors.mainColor
