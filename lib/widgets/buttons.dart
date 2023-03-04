@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/theme.dart';
+
 class CustomButton extends StatelessWidget {
   CustomButton({
     super.key,
@@ -55,7 +57,7 @@ class CustomButton extends StatelessWidget {
             color: onPressed == null ? Colors.grey : textColor,
             fontWeight: fontWeight,
             fontSize: fontSize,
-            fontFamily: 'Alexandria',
+            fontFamily: MyFonts.myFont,
           ),
         ),
       ),

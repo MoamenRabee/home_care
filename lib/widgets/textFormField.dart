@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/theme.dart';
 
@@ -18,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
     this.borderRadius,
     this.validator,
     this.fontFamily,
+    this.maxLength,
   });
 
   String text;
@@ -33,13 +35,16 @@ class CustomTextFormField extends StatelessWidget {
   BorderRadius? borderRadius;
   String? Function(String?)? validator;
   String? fontFamily;
+  int? maxLength;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       controller: controller,
       validator: validator,
       enabled: enabled,
+      maxLength: maxLength,
       style: TextStyle(
         color: isFilld != null && isFilld == true ? Colors.black : Colors.white,
         fontFamily: fontFamily,
@@ -50,13 +55,12 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       decoration: InputDecoration(
         filled: isFilld,
-        fillColor: Colors.white,
+        fillColor: color ?? Colors.white,
         hintText: text,
         hintStyle: TextStyle(
-          fontFamily: 'Alexandria',
-          color: isFilld != null && isFilld == true
-              ? Colors.grey
-              : Colors.white,
+          fontFamily: MyFonts.myFont,
+          color:
+              isFilld != null && isFilld == true ? Colors.grey : Colors.white,
         ),
         suffixIcon: suffixIcon,
         contentPadding:

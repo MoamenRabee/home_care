@@ -36,7 +36,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
       label: "حجوزاتي",
     ),
     BottomNavigationBarItem(
-        icon: Icon(Icons.newspaper_rounded), label: "الآخبار"),
+        icon: Icon(Icons.newspaper_rounded), label: "نصائح"),
     BottomNavigationBarItem(icon: Icon(Icons.home_rounded), label: "الرئيسية"),
     BottomNavigationBarItem(
         icon: Icon(Icons.notifications_rounded), label: "الإشعارات"),

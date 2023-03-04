@@ -11,51 +11,28 @@ class UserHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20,),
-            CarouselSlider(
-                items: [
-                  _imageSlider(image: Assets.sliderImage1),
-                  _imageSlider(image: Assets.sliderImage2),
-                  _imageSlider(image: Assets.sliderImage3),
-                  _imageSlider(image: Assets.sliderImage4),
-                  _imageSlider(image: Assets.sliderImage5),
-                  _imageSlider(image: Assets.sliderImage6),
-                  _imageSlider(image: Assets.sliderImage7),
-                ],
-                options: CarouselOptions(
-                  aspectRatio: 16 / 7,
-                  viewportFraction: 0.8,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: true,
-                  enlargeFactor: 0.3,
-                  scrollDirection: Axis.horizontal,
-                )),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: ServicesModel.services.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: ServicesModel.services.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 20,
+                    crossAxisSpacing: 20,
+                  ),
+                  itemBuilder: (context, index) {
+                    return _card(servicesModel: ServicesModel.services[index]);
+                  },
                 ),
-                itemBuilder: (context, index) {
-                  return _card(servicesModel: ServicesModel.services[index]);
-                },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -78,29 +55,32 @@ class UserHomeScreen extends StatelessWidget {
       width: 300,
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: MyColors.mainColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-              color: Colors.grey.shade200,
-              offset: const Offset(0, 0),
-              blurRadius: 4,
-              spreadRadius: 1)
+            color: Colors.grey.withOpacity(0.5),
+            offset: const Offset(0, 0),
+            blurRadius: 2,
+            spreadRadius: 0,
+          ),
         ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SvgPicture.asset(
-            servicesModel.asset,
-            width: 100,
-            color: Colors.white,
+          Expanded(
+            child: SvgPicture.asset(
+              servicesModel.asset,
+              color: MyColors.mainColor,
+              height: 90,
+            ),
           ),
           Text(
             servicesModel.name,
             style: const TextStyle(
               fontSize: 16,
-              color: Colors.white,
+              color: MyColors.mainColor,
               fontWeight: FontWeight.bold,
             ),
           ),

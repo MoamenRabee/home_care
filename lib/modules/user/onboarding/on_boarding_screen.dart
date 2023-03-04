@@ -1,13 +1,15 @@
-
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:home_care/constants/assets.dart';
-import 'package:home_care/functions/my_navigator.dart';
+import 'package:home_care/functions/my_navigation.dart';
+import 'package:home_care/modules/user/auth/user_login_screen.dart';
 import 'package:home_care/modules/user/layout/user_layout_sreen.dart';
 import 'package:home_care/theme/theme.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../functions/cache_helper.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   @override
@@ -24,8 +26,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     int index_page = 0;
 
     void canclePage() {
-      navigateOff(context, UserLayoutScreen());
-      
+      MyNavigator.navigateOffAll(context, UserLoginScreen());
+      CacheHelper.setString(key: "onBoarding", value: "true");
     }
 
     return Directionality(
@@ -48,7 +50,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,
-                          color: MyColors.orangeColor,
+                          color: MyColors.mainColor,
                         ),
                       ),
                     ),
@@ -156,7 +158,10 @@ Widget PageViewItem({
   return Column(
     children: [
       Expanded(
-        child: SvgPicture.asset(image!,width: (widthScreen! * 0.7),),
+        child: SvgPicture.asset(
+          image!,
+          width: (widthScreen! * 0.7),
+        ),
       ),
       SizedBox(
         width: double.infinity,
@@ -167,9 +172,10 @@ Widget PageViewItem({
             Text(
               "$title",
               style: const TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: MyColors.orangeColor),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: MyColors.mainColor,
+              ),
             ),
             const SizedBox(
               height: 10.0,

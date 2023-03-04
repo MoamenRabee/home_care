@@ -6,34 +6,53 @@ class MyTheme {
       appBarTheme: const AppBarTheme(
         backgroundColor: MyColors.mainColor,
         elevation: 0,
-        shape:  RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
           ),
+        ),
       ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        selectedItemColor: MyColors.orangeColor,
+        selectedItemColor: MyColors.mainColor,
         unselectedItemColor: Colors.grey.shade500,
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         elevation: 0,
       ),
+      
       primaryColor: MyColors.mainColor,
+      primarySwatch: MyColors.myMaterialMainColor,
       fontFamily: MyFonts.myFont,
-      accentColor: MyColors.mainColor
+      accentColor: MyColors.mainColor,
+      
+      
     );
   }
 }
 
-class MyColors{
-  static const Color mainColor = Color(0xFF007db3);
-  static const Color darkColor = Color(0xFF010066);
-  static const Color orangeColor = Color(0xFFff6600);
+class MyColors {
+  static const Color blueColor = Color(0xFF16ADE1);
+  static const Color mainColor = Color(0xFF1B3954);
+
+  static MaterialColor myMaterialMainColor = const MaterialColor(
+    0xFF1B3954,
+    {
+      50: Color(0xFF1B3954),
+      100: Color(0xFF1B3954),
+      200: Color(0xFF1B3954),
+      300: Color(0xFF1B3954),
+      400: Color(0xFF1B3954),
+      500: Color(0xFF1B3954),
+      600: Color(0xFF1B3954),
+      700: Color(0xFF1B3954),
+      800: Color(0xFF1B3954),
+      900: Color(0xFF1B3954),
+    },
+  );
+
 
 }
 
-
-class MyFonts{
+class MyFonts {
   static String myFont = "IBMPlexSansArabic";
 }

@@ -41,16 +41,32 @@ dependencies:
   smooth_page_indicator: ^1.0.0+2
   file_picker: ^5.2.4
   fluttertoast: ^8.1.2
-  flutter_launcher_icons: "^0.11.0"
+  flutter_launcher_icons: ^0.12.0
+  flutter_native_splash: ^2.2.18
   carousel_slider: ^4.2.1
   flutter:
     sdk: flutter
 
 
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/logo.png
+  color_dark: "#1B3954"
+  image_dark: assets/images/logo_c.jpg
+
+  android_12:
+    image: assets/images/logo.png
+    icon_background_color: "#ffffff"
+    image_dark: assets/images/logo_c.jpg
+    icon_background_color_dark: "#1B3954"
+
+  web: false
+
+
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path: "assets/images/logo_c.jpg"
   min_sdk_android: 21 
   web:
     generate: true

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "661418308102",
+    "project_id": "home-care-94471",
+    "storage_bucket": "home-care-94471.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661418308102:android:eff079fe2716bf14f74987",
+        "android_client_info": {
+          "package_name": "com.Codak.home_care"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661418308102-8lkp92no5nu7g39a5h780ku117dm11ft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfuuQ2Bv2Ow6SnuuQA_Bd-qIvFzAVw72o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661418308102-8lkp92no5nu7g39a5h780ku117dm11ft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
