@@ -10,6 +10,12 @@ class UserModel {
   String? userFCM;
   bool? isBlocked;
   double? points;
+  bool? isVerified;
+  bool? isPartner;
+  String? mainServiceId;
+  String? subServiceId;
+  String? imageIdCard;
+  String? imageWorkingPage;
 
 
   UserModel({
@@ -22,6 +28,12 @@ class UserModel {
     this.userFCM,
     this.isBlocked,
     this.points,
+    this.isVerified,
+    this.isPartner,
+    this.mainServiceId,
+    this.subServiceId,
+    this.imageIdCard,
+    this.imageWorkingPage,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -33,7 +45,12 @@ class UserModel {
     email = json["email"];
     userFCM = json["userFCM"];
     isBlocked = json["isBlocked"];
-    points = json["points"];
+    isVerified = json["isVerified"];
+    isPartner = json["isPartner"];
+    mainServiceId = json["mainServiceId"];
+    subServiceId = json["subServiceId"];
+    imageIdCard = json["imageIdCard"];
+    imageWorkingPage = json["imageWorkingPage"];
   }
 
 
@@ -48,6 +65,12 @@ class UserModel {
       "userFCM": userFCM,
       "isBlocked": isBlocked,
       "points": points,
+      "isVerified": isVerified,
+      "isPartner": isPartner,
+      "mainServiceId": mainServiceId,
+      "subServiceId": subServiceId,
+      "imageIdCard": imageIdCard,
+      "imageWorkingPage": imageWorkingPage,
     };
   }
 }

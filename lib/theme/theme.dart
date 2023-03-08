@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyTheme {
   static ThemeData get myTheme {
@@ -6,6 +7,14 @@ class MyTheme {
       appBarTheme: const AppBarTheme(
         backgroundColor: MyColors.mainColor,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: MyColors.mainColor,
+          systemNavigationBarColor: MyColors.mainColor,
+          systemNavigationBarDividerColor: MyColors.mainColor,
+          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.light,
+          systemNavigationBarIconBrightness: Brightness.light
+        ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(20),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:home_care/functions/my_navigation.dart';
+import 'package:home_care/modules/user/auth/terms_and_conditions_screen.dart';
 import 'package:home_care/modules/user/auth/user_login_screen.dart';
 import 'package:home_care/modules/user/layout/user_layout_sreen.dart';
 import 'package:home_care/theme/theme.dart';
@@ -139,6 +140,36 @@ class UserSignUpScreen extends StatelessWidget {
                           }
                           return null;
                         },
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: cubit.isTermsChecked,
+                            onChanged: (val) {
+                              cubit.changeTermsChecked();
+                            },
+                            
+                          ),
+                          const Text(
+                            "انا اوفق علي ",
+                          ),
+                          InkWell(
+                            onTap: () {
+                              MyNavigator.navigateTo(
+                                context,
+                                const TermsAndConditionsScreen(),
+                              );
+                            },
+                            child: const Text(
+                              "الشروط و الآحكام",
+                              style: TextStyle(
+                                color: MyColors.mainColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(height: 20),
                       cubit.isLoading

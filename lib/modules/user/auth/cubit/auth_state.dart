@@ -6,6 +6,7 @@ abstract class AuthState {}
 class AuthInitial extends AuthState {}
 
 class PasswordIsVisiableChange extends AuthState {}
+class IsTermsChecked extends AuthState {}
 
 
 class SignUpLoading extends AuthState {}

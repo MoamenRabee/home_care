@@ -20,14 +20,14 @@ class UserHomeScreen extends StatelessWidget {
                 child: GridView.builder(
                   physics: const BouncingScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: ServicesModel.services.length,
+                  itemCount: MainServicesModel.mainServices.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 20,
                     crossAxisSpacing: 20,
                   ),
                   itemBuilder: (context, index) {
-                    return _card(servicesModel: ServicesModel.services[index]);
+                    return _card(mainServicesModel: MainServicesModel.mainServices[index]);
                   },
                 ),
               ),
@@ -50,7 +50,7 @@ class UserHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _card({required ServicesModel servicesModel}) {
+  Widget _card({required MainServicesModel mainServicesModel}) {
     return Container(
       width: 300,
       padding: const EdgeInsets.all(15),
@@ -71,13 +71,13 @@ class UserHomeScreen extends StatelessWidget {
         children: [
           Expanded(
             child: SvgPicture.asset(
-              servicesModel.asset,
+              mainServicesModel.asset,
               color: MyColors.mainColor,
               height: 90,
             ),
           ),
           Text(
-            servicesModel.name,
+            mainServicesModel.name,
             style: const TextStyle(
               fontSize: 16,
               color: MyColors.mainColor,

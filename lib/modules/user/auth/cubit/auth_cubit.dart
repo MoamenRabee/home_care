@@ -23,10 +23,16 @@ class AuthCubit extends Cubit<AuthState> {
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
 
   bool isLoading = false;
+  bool isTermsChecked = false;
 
   bool loginPasswordIsVisiable = true;
   bool passwordIsVisiable = true;
   bool confirmPasswordIsVisiable = true;
+
+  void changeTermsChecked() {
+    isTermsChecked = !isTermsChecked;
+    emit(IsTermsChecked());
+  }
 
   void changeLoginPasswordChange() {
     loginPasswordIsVisiable = !loginPasswordIsVisiable;
@@ -49,7 +55,8 @@ class AuthCubit extends Cubit<AuthState> {
     required String phone,
     required String password,
   }) async {
-    isLoading = true;
+    if(isTermsChecked){
+      isLoading = true;
     emit(SignUpLoading());
     try {
       UserModel userModel = UserModel(
@@ -62,6 +69,12 @@ class AuthCubit extends Cubit<AuthState> {
         userFCM: null,
         isBlocked: false,
         points: 0,
+        isVerified: false,
+        imageIdCard: null,
+        imageWorkingPage: null,
+        mainServiceId: null,
+        subServiceId: null,
+        isPartner: null,
       );
 
       var result =
@@ -91,6 +104,10 @@ class AuthCubit extends Cubit<AuthState> {
       isLoading = false;
       emit(SignUpError(e.toString()));
     }
+    }else{
+      showMessage(message: "يرجي الموافقة علي شروط الاستخدام", color: Colors.red);
+    }
+    
   }
 
   Future<void> login({

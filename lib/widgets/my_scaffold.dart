@@ -60,7 +60,7 @@ class MyScaffold extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 17),
+                            padding: const EdgeInsets.only(top: 20),
                             child: title,
                           ),
                         ],

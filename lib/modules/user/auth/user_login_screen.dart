@@ -57,6 +57,7 @@ class UserLoginScreen extends StatelessWidget {
                     isFilld: true,
                     color: MyColors.mainColor.withOpacity(0.1),
                     textColor: Colors.black,
+                    keyboardType: TextInputType.phone,
                     borderRadius: BorderRadius.circular(20),
                     validator: (val) {
                       if (val!.isEmpty) {

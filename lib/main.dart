@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_care/modules/user/auth/cubit/auth_cubit.dart';
 import 'package:home_care/modules/user/auth/user_login_screen.dart';
+import 'package:home_care/modules/user/join/cubit/join_us_cubit.dart';
+import 'package:home_care/modules/user/join/join_us_screen.dart';
 import 'package:home_care/modules/user/layout/cubit/cubit.dart';
 import 'package:home_care/modules/user/layout/user_layout_sreen.dart';
 import 'package:home_care/theme/theme.dart';
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<LayoutCubit>(create: (context) => LayoutCubit()),
           BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
+          BlocProvider<JoinUsCubit>(create: (context) => JoinUsCubit()),
         ],
         child: MaterialApp(
           title: 'Home Care',
