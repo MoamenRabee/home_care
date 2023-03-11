@@ -31,7 +31,13 @@ class JoinUsCubit extends Cubit<JoinUsState> {
   UserModel? myProfile;
 
   void selectServices() {
+    selectedSubService=null;
     emit(SelectServicesState());
+
+  }
+    void selectSubServices() {
+    emit(SelectServicesState());
+
   }
 
   void uploadWorkPage() async {
@@ -169,7 +175,7 @@ class JoinUsCubit extends Cubit<JoinUsState> {
       if (myProfile!.imageIdCard == null &&
           myProfile!.imageWorkingPage == null &&
           myProfile!.image == null) {
-        showMessage(message: "يرجي اختيار تحديد الصور", color: Colors.red);
+        showMessage(message: "يرجي تحديد الصور", color: Colors.red);
       } else {
         await FirebaseFirestore.instance
             .collection("Users")

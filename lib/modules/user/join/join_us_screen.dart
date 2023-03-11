@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:home_care/functions/my_validate.dart';
+import 'package:home_care/functions/services.dart';
 import 'package:home_care/models/services_model.dart';
 import 'package:home_care/modules/user/auth/user_signup_screen.dart';
 
@@ -28,6 +29,8 @@ class JoinUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     JoinUsCubit cubit = JoinUsCubit.get(context);
     cubit.getMyProfile();
+    cubit.selectedMainService = null;
+    cubit.selectedSubService = null;
     return BlocConsumer<JoinUsCubit, JoinUsState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -134,6 +137,7 @@ class JoinUsScreen extends StatelessWidget {
                                           cubit.selectedMainService = val;
                                           cubit.selectServices();
                                         },
+                                        value: cubit.selectedMainService,
                                         validator: (val) {
                                           if (val == null) {
                                             return "يرجي اختيار التخصص الرئيسي";
@@ -155,10 +159,8 @@ class JoinUsScreen extends StatelessWidget {
                                       ),
                                     ),
                                     const SizedBox(height: 20),
-                                    IgnorePointer(
-                                      ignoring:
-                                          cubit.selectedMainService == null,
-                                      child: ClipRRect(
+                                    if (cubit.selectedMainService != null)
+                                      ClipRRect(
                                         borderRadius: BorderRadius.circular(20),
                                         child: DropdownButtonFormField<String>(
                                           style: TextStyle(
@@ -195,53 +197,37 @@ class JoinUsScreen extends StatelessWidget {
                                           ),
                                           onChanged: (val) {
                                             cubit.selectedSubService = val;
-                                            cubit.selectServices();
+                                            cubit.selectSubServices();
                                           },
+                                          value: cubit.selectedSubService,
                                           validator: (val) {
                                             if (val == null) {
                                               return "يرجي اختيار التخصص الفرعي";
                                             }
                                           },
                                           items: [
-                                            if (cubit.selectedMainService !=
-                                                null)
-                                              ...List.generate(
-                                                  MainServicesModel.mainServices
-                                                      .where((element) =>
-                                                          element.id ==
-                                                          cubit
-                                                              .selectedMainService)
-                                                      .first
-                                                      .services
-                                                      .length, (index) {
-                                                return DropdownMenuItem<String>(
-                                                  value: MainServicesModel
-                                                      .mainServices
-                                                      .where((element) =>
-                                                          element.id ==
-                                                          cubit
-                                                              .selectedMainService)
-                                                      .first
-                                                      .services[index]
-                                                      .id,
-                                                  alignment: Alignment.center,
-                                                  child: Text(
-                                                    MainServicesModel
-                                                        .mainServices
-                                                        .where((element) =>
-                                                            element.id ==
+                                            ...List.generate(
+                                                getServicesFromMainServices(cubit
+                                                        .selectedMainService!)
+                                                    .length, (index) {
+                                              return DropdownMenuItem<String>(
+                                                value: getServicesFromMainServices(
                                                             cubit
-                                                                .selectedMainService)
-                                                        .first
-                                                        .services[index]
-                                                        .name,
-                                                  ),
-                                                );
-                                              })
+                                                                .selectedMainService!)[
+                                                        index]
+                                                    .id,
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  getServicesFromMainServices(cubit
+                                                              .selectedMainService!)[
+                                                          index]
+                                                      .name,
+                                                ),
+                                              );
+                                            })
                                           ],
                                         ),
                                       ),
-                                    ),
                                     const SizedBox(height: 20),
                                     Row(
                                       mainAxisAlignment:
